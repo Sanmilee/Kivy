@@ -1,0 +1,57 @@
+<PongBall>:
+    size: 50, 50 
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+
+<PongPaddle>:
+    size: 25, 200 
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+
+<PongGame>:
+    ball: pong_ball
+
+    canvas:
+        Rectangle: 
+            pos: self.center_x - 5 ,  0     # (center_of_X_axis, all_of_height_size)
+            size: 10, self.height      # (center, all_of_height_size)
+
+    Label:
+        font_size: 70
+        center_x: root.width / 4       # (length_of_X_axis / 4)
+        top: root.top - 50             # (from the highest height - 50)
+        text: "0"                      
+
+    Label:
+        font_size: 70
+        center_x: root.width * 3/4     # (length_of_X_axis * 3/4) :  to get the center of the second block
+        top: root.top - 50             # (from the highest height - 50)
+        text: "1"
+
+
+    PongBall:
+        id: pong_ball
+        center: self.parent.center     #take the center of PongGame
+
+    
+    PongPaddle:
+        id: player_left
+        x: root.x
+        center_y: root.center_y    
+
+    PongPaddle:
+        id: player_right
+        x: root.width - self.width
+        center_y: root.center_y     
+
+
+
+
+        
